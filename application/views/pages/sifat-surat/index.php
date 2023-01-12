@@ -1,9 +1,9 @@
 <section class="section">
 	<div class="section-header">
-		<h1>Data User</h1>
+		<h1>Data Sifat Surat</h1>
 		<div class="section-header-breadcrumb">
 			<div class="breadcrumb-item active"><a href="<?= base_url('dashboard') ?>">Dashboard</a></div>
-			<div class="breadcrumb-item">Data User</div>
+			<div class="breadcrumb-item">Data Sifat Surat</div>
 		</div>
 	</div>
 	<div class="section-body">
@@ -11,15 +11,13 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-body">
-						<a href="<?= base_url('user/tambah') ?>" class="btn  btn-primary mb-3">Tambah Data</a>
+						<a href="<?= base_url('Sifat_Surat/tambah') ?>" class="btn  btn-primary mb-3">Tambah Data</a>
 						<div class="table-responsive">
 							<table class="table table-hover" id="dTable">
 								<thead>
 									<tr>
 										<th>No</th>
-										<th>Gambar</th>
-										<th>Nama</th>
-										<th>Username</th>
+										<th>Sifat Surat</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
@@ -27,19 +25,11 @@
 									<?php $i = 1; foreach($items as $item) : ?>
 									 <tr>
 										 <td><?= $i++; ?></td>
-										 <td>
-											<?php if($item->gambar) : ?>
-											 <img src="<?= base_url('uploads/') . $item->gambar ?>" alt="" class="img-fluid rounded-circle" style="max-height:60px">
-											 <?php else: ?>
-												<img src="<?= base_url('assets/img/avatar/avatar-1.png') ?>" alt="" class="img-fluid rounded-circle" style="max-height:60px">
-											<?php endif; ?>
-										 </td>
-										<td><?= $item->nama ?></td>
-										<td><?= $item->username ?></td>
+										<td><?= $item->sifat_surat ?></td>
 										<td>
-											<a href="<?= base_url('user/edit/')  . $item->id_user ?>" class="btn  btn-info">Edit</a>
+											<a href="<?= base_url('Sifat_Surat/edit/')  . $item->id_sifat_surat ?>" class="btn  btn-info">Edit</a>
 											<form action="javascript:void(0)" method="post" class="d-inline" id="formDelete">
-												<button class="btn btnDelete btn-danger" data-url="<?= base_url('user/delete/' . $item->id_user) ?>">Hapus</button>
+												<button class="btn btnDelete btn-danger" data-url="<?= base_url('Sifat_Surat/delete/' . $item->id_sifat_surat) ?>">Hapus</button>
 											</form>
 										</td>
 									 </tr>

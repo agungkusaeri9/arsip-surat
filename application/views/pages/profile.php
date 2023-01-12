@@ -15,7 +15,12 @@
 		<div class="row mt-sm-4">
 			<div class="col-12 col-md-12">
 				<div class="card">
-					<form method="post" class="needs-validation" action="<?= base_url('profile/update') ?>">
+					<?php if (isset($error)) : ?>
+						<div class="alert alert-danger">
+							<?= $error ?>
+						</div>
+					<?php endif; ?>
+					<form method="post" class="needs-validation" action="<?= base_url('profile/update') ?>" enctype="multipart/form-data">
 						<div class="card-header">
 							<h4>Edit Profile</h4>
 						</div>
@@ -40,12 +45,12 @@
 							</div>
 							<div class="form-group ">
 								<label>Gambar</label>
-								<input id="gambar" type="file" class="form-control <?php if (form_error('gambar')) : ?> is-invalid <?php endif; ?>" name="gambar" tabindex="1" value="<?= $this->session->userdata('gambar') ?>">
-										<?php if (form_error('gambar')) : ?>
-											<div class="invalid-feedback">
-												<?= form_error('gambar') ?>
-											</div>
-										<?php endif; ?>
+								<input id="gambar" type="file" class="form-control <?php if (form_error('gambar')) : ?> is-invalid <?php endif; ?>" name="gambar" tabindex="1">
+								<?php if (form_error('gambar')) : ?>
+									<div class="invalid-feedback">
+										<?= form_error('gambar') ?>
+									</div>
+								<?php endif; ?>
 							</div>
 						</div>
 						<div class="card-footer text-right">

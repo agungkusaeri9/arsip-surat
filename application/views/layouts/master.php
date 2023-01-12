@@ -10,15 +10,10 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-	<!-- CSS Libraries -->
-	<link rel="stylesheet" href="<?= base_url() ?>/node_modules/jqvmap/dist/jqvmap.min.css">
-	<link rel="stylesheet" href="<?= base_url() ?>/node_modules/summernote/dist/summernote-bs4.css">
-	<link rel="stylesheet" href="<?= base_url() ?>/node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
-	<link rel="stylesheet" href="<?= base_url() ?>/node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
-
 	<!-- Template CSS -->
 	<link rel="stylesheet" href="<?= base_url() ?>/assets/css/style.css">
 	<link rel="stylesheet" href="<?= base_url() ?>/assets/css/components.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -31,7 +26,7 @@
 
 			<!-- Main Content -->
 			<div class="main-content">
-			<?php $this->load->view($content ?? '-') ?>
+				<?php $this->load->view($content ?? '-') ?>
 			</div>
 			<?php $this->load->view('layouts/footer') ?>
 		</div>
@@ -46,18 +41,21 @@
 	<script src="<?= base_url() ?>/assets/js/stisla.js"></script>
 
 	<!-- JS Libraies -->
-	<script src="<?= base_url() ?>/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
-	<script src="<?= base_url() ?>/node_modules/chart.js/dist/Chart.min.js"></script>
-	<script src="<?= base_url() ?>/node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
-	<script src="<?= base_url() ?>/node_modules/summernote/dist/summernote-bs4.js"></script>
-	<script src="<?= base_url() ?>/node_modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
-
+	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 	<!-- Template JS File -->
 	<script src="<?= base_url() ?>/assets/js/scripts.js"></script>
 	<script src="<?= base_url() ?>/assets/js/custom.js"></script>
 
 	<!-- Page Specific JS File -->
 	<script src="<?= base_url() ?>/assets/js/page/index.js"></script>
+	<?php $this->load->view('layouts/partials/alert') ?>
+	<script>
+		$(document).ready(function() {
+			$('#dTable').DataTable();
+		});
+	</script>
+	
 </body>
 
 </html>

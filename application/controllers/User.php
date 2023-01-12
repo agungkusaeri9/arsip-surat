@@ -38,6 +38,7 @@ class User extends CI_Controller
 			$this->load->view('layouts/master', $data);
 		} else {
 			$this->user->create($this->input->post());
+			$this->session->set_flashdata('success','Data User berhasil ditambahkan!');
 			redirect('user');
 		}
 	}
@@ -85,6 +86,7 @@ class User extends CI_Controller
 				$data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 			}
 			$this->user->update($id_user, $data);
+			$this->session->set_flashdata('success','Data User berhasil disimpan!');
 			redirect('user');
 		}
 	}
@@ -92,6 +94,7 @@ class User extends CI_Controller
 	public function delete($id_user = NULL)
 	{
 		$this->user->delete($id_user);
+		$this->session->set_flashdata('success','Data User berhasil dihapus!');
 		redirect('user');
 	}
 }

@@ -13,6 +13,12 @@
 		<li>
 			<a class="nav-link" href="<?= base_url('user') ?>"><i class="fas fa-users"></i> <span>User</span></a>
 		</li>
+		<li>
+			<a class="nav-link" href="<?= base_url('Sifat_Surat') ?>"><i class="fas fa-users"></i> <span>Sifat Surat</span></a>
+		</li>
+		<li>
+			<a class="nav-link" href="<?= base_url('Klasifikasi') ?>"><i class="fas fa-users"></i> <span>Klasifikasi</span></a>
+		</li>
 
 		<li class="nav-item dropdown">
 			<a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>MENU</span></a>
