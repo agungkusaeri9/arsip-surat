@@ -27,7 +27,7 @@
 						<div class="card-body">
 							<div class="form-group ">
 								<label>Nama</label>
-								<input id="nama" type="text" class="form-control <?php if (form_error('nama')) : ?> is-invalid <?php endif; ?>" name="nama" tabindex="1" value="<?= $this->session->userdata('nama') ?>">
+								<input id="nama" type="text" class="form-control <?php if (form_error('nama')) : ?> is-invalid <?php endif; ?>" name="nama" tabindex="1" value="<?= $item->nama ?>">
 								<?php if (form_error('nama')) : ?>
 									<div class="invalid-feedback">
 										<?= form_error('nama') ?>
@@ -36,7 +36,7 @@
 							</div>
 							<div class="form-group ">
 								<label>Username</label>
-								<input id="username" type="text" class="form-control <?php if (form_error('username')) : ?> is-invalid <?php endif; ?>" name="username" tabindex="1" value="<?= $this->session->userdata('username') ?>" readonly>
+								<input id="username" type="text" class="form-control <?php if (form_error('username')) : ?> is-invalid <?php endif; ?>" name="username" tabindex="1" value="<?= $item->username ?>" readonly>
 								<?php if (form_error('username')) : ?>
 									<div class="invalid-feedback">
 										<?= form_error('username') ?>

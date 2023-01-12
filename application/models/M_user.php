@@ -30,6 +30,14 @@ class M_user extends CI_Model {
 		$this->db->update('users',$data);
 	}
 
+	public function checkUser($id_user,$arr)
+	{
+		$this->db->where('id_user',$id_user);
+		$this->db->where($arr);
+		$user = $this->db->get('users');
+		return $user->row();
+	}
+
 	public function delete($id_user)
 	{
 		$this->db->where('id_user',$id_user);

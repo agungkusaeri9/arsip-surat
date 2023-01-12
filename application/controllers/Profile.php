@@ -4,10 +4,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Profile extends CI_Controller
 {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('M_user','user');
+	}
 
 	public function index()
 	{
+		$user = $this->user->find($this->session->userdata('id_user'));
 		$data['content'] = 'pages/profile';
+		$data['item'] = $user;
 		$this->load->view('layouts/master', $data);
 	}
 
@@ -19,9 +26,9 @@ class Profile extends CI_Controller
 			$data['content'] = 'pages/profile';
 			$this->load->view('layouts/master', $data);
 		} else {
-			$data = $this->input->post();
-			if ($this->input->post('gambar')) {
-				$config['upload_path']   = 'uploads/user/';
+			$data = [];
+			if ($_FILES['gambar']['name']) {
+				$config['upload_path']   = './uploads/user/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
 				$config['max_size']      = 2024;
 				$this->load->library('upload', $config);
@@ -29,12 +36,19 @@ class Profile extends CI_Controller
 				if ($this->upload->do_upload('gambar')) {
 					$uploadData = $this->upload->data();
 					$uploadedFile = $uploadData['file_name'];
+					$data['gambar'] = $uploadData['file_name'];
 				} else {
 					$data['error'] = $this->upload->display_errors();
+					$data['content'] = 'pages/profile';
+					$this->load->view('layouts/master', $data);
 				}
-				$data['content'] = 'pages/profile';
-				$this->load->view('layouts/master', $data);
+			
 			}
+			$data['nama'] = $this->input->post('nama');
+		
+			$this->user->update($this->session->userdata('id_user'),$data);
+			$this->session->set_flashdata('success','Profile berhasil disimpan!');
+			redirect('profile');
 	
 		}
 	}

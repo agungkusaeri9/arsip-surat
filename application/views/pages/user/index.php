@@ -29,9 +29,9 @@
 										 <td><?= $i++; ?></td>
 										 <td>
 											<?php if($item->gambar) : ?>
-											 <img src="<?= base_url('uploads/') . $item->gambar ?>" alt="" class="img-fluid rounded-circle" style="max-height:60px">
+											 <img src="<?= base_url('uploads/user/') . $item->gambar ?>" alt="" class="img-fluid rounded-circle" style="max-height:60px;max-width:60px;">
 											 <?php else: ?>
-												<img src="<?= base_url('assets/img/avatar/avatar-1.png') ?>" alt="" class="img-fluid rounded-circle" style="max-height:60px">
+												<img src="<?= base_url('assets/img/avatar/avatar-1.png') ?>" alt="" class="img-fluid rounded-circle" style="max-height:60px;max-width:60px;">
 											<?php endif; ?>
 										 </td>
 										<td><?= $item->nama ?></td>

@@ -31,7 +31,7 @@ CREATE TABLE `klasifikasi` (
   `id_klasifikasi` int NOT NULL,
   `nama` varchar(50) NOT NULL,
   `jabatan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `klasifikasi`
@@ -49,7 +49,7 @@ INSERT INTO `klasifikasi` (`id_klasifikasi`, `nama`, `jabatan`) VALUES
 CREATE TABLE `sifat_surat` (
   `id_sifat_surat` int NOT NULL,
   `sifat_surat` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sifat_surat`
@@ -74,7 +74,7 @@ CREATE TABLE `surat_keluar` (
   `tanggal_diterima` date NOT NULL,
   `keterangan` varchar(255) NOT NULL,
   `file` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,7 @@ CREATE TABLE `surat_masuk` (
   `tanggal_diterima` date NOT NULL,
   `keterangan` varchar(255) NOT NULL,
   `file` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 

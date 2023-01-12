@@ -37,7 +37,28 @@ class User extends CI_Controller
 			$data['items'] = $this->user->get();
 			$this->load->view('layouts/master', $data);
 		} else {
-			$this->user->create($this->input->post());
+			$data = $this->input->post();
+			if ($_FILES['gambar']['name']) {
+				$config['upload_path']   = './uploads/user/';
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['max_size']      = 2024;
+				$this->load->library('upload', $config);
+				//upload file to directory
+				if ($this->upload->do_upload('gambar')) {
+					$uploadData = $this->upload->data();
+					$uploadedFile = $uploadData['file_name'];
+					$data['gambar'] = $uploadData['file_name'];
+				} else {
+					$data['error'] = $this->upload->display_errors();
+					$data['content'] = 'pages/profile';
+					$this->load->view('layouts/master', $data);
+				}
+			
+			}else{
+				$data['gambar'] = NULL;
+			}
+
+			$this->user->create($data);
 			$this->session->set_flashdata('success','Data User berhasil ditambahkan!');
 			redirect('user');
 		}
@@ -60,7 +81,7 @@ class User extends CI_Controller
 	public function update($id_user = NULL)
 	{
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
-		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
+		$this->form_validation->set_rules('username', 'Username', 'required');
 		if ($this->input->post('password')) {
 			$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
 			$this->form_validation->set_rules('konfirmasi_password', 'Konfirmasi Password', 'required|matches[password]');
@@ -77,11 +98,34 @@ class User extends CI_Controller
 			$data['item'] = $user;
 			$this->load->view('layouts/master', $data);
 		} else {
+			// validasi username unique
+			$cekUser = $this->user->checkUser($id_user,array('username' => $this->input->post('username')));
+			if($cekUser)
+			{
+				$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
+			}
 			$data = [
 				'nama' => $this->input->post('nama'),
-				'username' => $this->input->post('username'),
-				'gambar' => $this->input->post('gambar')
+				'username' => $this->input->post('username')
 			];
+			if ($_FILES['gambar']) {
+				$config['upload_path']   = './uploads/user/';
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['max_size']      = 2024;
+				$this->load->library('upload', $config);
+				//upload file to directory
+				if ($this->upload->do_upload('gambar')) {
+					$uploadData = $this->upload->data();
+					$uploadedFile = $uploadData['file_name'];
+					$data['gambar'] = $uploadData['file_name'];
+				} else {
+					$data['error'] = $this->upload->display_errors();
+					$data['content'] = 'pages/profile';
+					$this->load->view('layouts/master', $data);
+				}
+			
+			}
+
 			if ($this->input->post('password')) {
 				$data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 			}
