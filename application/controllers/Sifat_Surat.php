@@ -37,6 +37,7 @@ class Sifat_Surat extends CI_Controller
 			redirect('Sifat_Surat');
 		}
 	}
+	
 
 	public function edit($id_sifat_surat = NULL)
 	{

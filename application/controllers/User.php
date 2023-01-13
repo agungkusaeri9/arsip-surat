@@ -120,7 +120,7 @@ class User extends CI_Controller
 					$post['gambar'] = $uploadData['file_name'];
 				} else {
 					$data['error'] = $this->upload->display_errors();
-					$data['content'] = 'pages/profile';
+					$data['content'] = 'pages/user/index';
 					$this->load->view('layouts/master', $data);
 				}
 			

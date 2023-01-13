@@ -11,7 +11,7 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-body">
-						<a href="<?= base_url('surat_keluar/tambah') ?>" class="btn  btn-primary mb-3">Tambah Data</a>
+						<a href="<?= base_url('Surat_Keluar/tambah') ?>" class="btn  btn-primary mb-3">Tambah Data</a>
 						<div class="table-responsive">
 							<table class="table table-hover" id="dTable">
 								<thead>
@@ -47,9 +47,9 @@
 											<?php endif; ?>
 										</td>
 										<td>
-											<a href="<?= base_url('surat_keluar/edit/')  . $item->id_surat_keluar ?>" class="btn  btn-info">Edit</a>
+											<a href="<?= base_url('Surat_Keluar/edit/')  . $item->id_surat_keluar ?>" class="btn  btn-info">Edit</a>
 											<form action="javascript:void(0)" method="post" class="d-inline" id="formDelete">
-												<button class="btn btnDelete btn-danger" data-url="<?= base_url('surat_keluar/delete/' . $item->id_surat_keluar) ?>">Hapus</button>
+												<button class="btn btnDelete btn-danger" data-url="<?= base_url('Surat_Keluar/delete/' . $item->id_surat_keluar) ?>">Hapus</button>
 											</form>
 										</td>
 									 </tr>
