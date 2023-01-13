@@ -44,9 +44,12 @@ class Profile extends CI_Controller
 				}
 			
 			}
+
 			$data['nama'] = $this->input->post('nama');
-		
 			$this->user->update($this->session->userdata('id_user'),$data);
+
+			$user = $this->user->find($this->session->userdata('id_user'));
+			$this->session->set_userdata('gambar',$user->gambar);
 			$this->session->set_flashdata('success','Profile berhasil disimpan!');
 			redirect('profile');
 	

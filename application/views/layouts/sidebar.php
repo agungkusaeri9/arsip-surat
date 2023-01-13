@@ -21,9 +21,10 @@
 		</li>
 
 		<li class="nav-item dropdown">
-			<a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>MENU</span></a>
+			<a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Transaksi</span></a>
 			<ul class="dropdown-menu">
-				<li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
+				<li><a class="nav-link" href="<?= base_url('surat_masuk') ?>">Surat Masuk</a></li>
+				<li><a class="nav-link" href="<?= base_url('surat_keluar') ?>">Surat Keluar</a></li>
 			</ul>
 		</li>
 	</ul>

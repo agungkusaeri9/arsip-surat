@@ -104,7 +104,7 @@ class User extends CI_Controller
 			{
 				$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
 			}
-			$data = [
+			$post = [
 				'nama' => $this->input->post('nama'),
 				'username' => $this->input->post('username')
 			];
@@ -117,7 +117,7 @@ class User extends CI_Controller
 				if ($this->upload->do_upload('gambar')) {
 					$uploadData = $this->upload->data();
 					$uploadedFile = $uploadData['file_name'];
-					$data['gambar'] = $uploadData['file_name'];
+					$post['gambar'] = $uploadData['file_name'];
 				} else {
 					$data['error'] = $this->upload->display_errors();
 					$data['content'] = 'pages/profile';
@@ -127,9 +127,9 @@ class User extends CI_Controller
 			}
 
 			if ($this->input->post('password')) {
-				$data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+				$post['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 			}
-			$this->user->update($id_user, $data);
+			$this->user->update($id_user, $post);
 			$this->session->set_flashdata('success','Data User berhasil disimpan!');
 			redirect('user');
 		}

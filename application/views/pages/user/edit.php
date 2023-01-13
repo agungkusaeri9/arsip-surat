@@ -12,7 +12,7 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-body">
-						<form action="<?= base_url('user/update/' . $item->id_user) ?>" method="post">
+						<form action="<?= base_url('user/update/' . $item->id_user) ?>" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="nama">Nama</label>
 								<input id="nama" type="text" class="form-control <?php if (form_error('nama')) : ?> is-invalid <?php endif; ?>" name="nama" tabindex="1" autofocus value="<?= $item->nama ?>">
