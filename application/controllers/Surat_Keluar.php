@@ -84,14 +84,18 @@ class Surat_Keluar extends CI_Controller
 
 	public function update($id_surat_keluar = NULL)
 	{
+		
 		$this->form_validation->set_rules('no_agenda','No. Agenda','required');
 		$this->form_validation->set_rules('pengirim','Pengirim','required');
-		$this->form_validation->set_rules('no_surat','No. Surat','required|callback_nosurat_check');
+		$this->form_validation->set_rules('no_surat','No. Surat',
+		array(
+			'callback_nosurat_check'
+	));
 		$this->form_validation->set_rules('isi','Isi','required');
 		$this->form_validation->set_rules('tanggal_surat','Tanggal Surat','required');
 		$this->form_validation->set_rules('tanggal_diterima','Tanggal Diterima','required');
 		// $this->form_validation->set_rules('file','File','required');
-
+		// var_dump($this->input->post());die;
 		if($this->form_validation->run() == FALSE)
 		{
 			$item = $this->surat_keluar->find($id_surat_keluar);
@@ -137,12 +141,12 @@ class Surat_Keluar extends CI_Controller
 	public function nosurat_check()
 	{
 		$input = $this->input->post();
-		$cekSuratKeluar = $this->surat_keluar->check(array('no_surat',$input['no_surat']),$input['id_surat_keluar']);
+		$cekSuratKeluar = $this->surat_keluar->checknosurat($input['no_surat'],$input['id_surat_keluar']);
+	
 		if($cekSuratKeluar->num_rows() > 0)
 		{
-			die('no surat ada');
-		}else{
-			die('tidak ada');
+			$this->form_validation->set_message('nosurat_check', 'The {field} already exist');
+			return FALSE;
 		}
 	}
 
@@ -151,6 +155,12 @@ class Surat_Keluar extends CI_Controller
 		$this->surat_keluar->delete($id_surat_keluar);
 		$this->session->set_flashdata('success','Data Surat Keluar berhasil dihapus!');
 		redirect('Surat_Keluar');
+	}
+	
+	public function download($id_surat_keluar){		
+		$this->load->helper('download');	
+		$item = $this->surat_keluar->find($id_surat_keluar);		
+		force_download('uploads/surat_keluar/' . $item->file,NULL);
 	}
 
 }

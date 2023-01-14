@@ -21,11 +21,26 @@
 		</li>
 
 		<li class="nav-item dropdown">
-			<a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Transaksi</span></a>
+			<a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Transaksi Surat</span></a>
 			<ul class="dropdown-menu">
-				<li><a class="nav-link" href="<?= base_url('surat_masuk') ?>">Surat Masuk</a></li>
+				<li><a class="nav-link" href="<?= base_url('Surat_Masuk') ?>">Surat Masuk</a></li>
 				<li><a class="nav-link" href="<?= base_url('Surat_Keluar') ?>">Surat Keluar</a></li>
 			</ul>
+		</li>
+
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i> <span>Buku Agenda</span></a>
+			<ul class="dropdown-menu">
+				<li><a class="nav-link" href="<?= base_url('Surat_Masuk') ?>">Surat Masuk</a></li>
+				<li><a class="nav-link" href="<?= base_url('Surat_Keluar') ?>">Surat Keluar</a></li>
+			</ul>
+		</li>
+
+		<li>
+			<a class="nav-link" href="<?= base_url('Klasifikasi') ?>"><i class="fas fa-file-archive"></i> <span>Galeri File</span></a>
+		</li>
+		<li>
+			<a class="nav-link" href="<?= base_url('Klasifikasi') ?>"><i class="fas fa-users"></i> <span>Ubah Password</span></a>
 		</li>
 	</ul>
 </aside>

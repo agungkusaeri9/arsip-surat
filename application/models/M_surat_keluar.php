@@ -13,10 +13,10 @@ class M_surat_keluar extends CI_Model {
 		return $this->db->get('surat_keluar')->row();
 	}
 
-	public function check($arr,$id_surat_keluar)
+	public function checknosurat($no_surat,$id_surat_keluar)
 	{
-		$this->db->where($arr);
-		$this->db->where('id_surat_keluar','!=',$id_surat_keluar);
+		$this->db->where('no_surat',$no_surat);
+		$this->db->where('id_surat_keluar !=',$id_surat_keluar);
 		return $this->db->get('surat_keluar');
 	}
 

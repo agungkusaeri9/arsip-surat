@@ -41,12 +41,13 @@
 										<td><?= $item->keterangan ?></td>
 										<td>
 											<?php if($item->file) : ?>
-											 <a href="" class="btn btn-success">Download</a>
+											 <a href="<?= base_url('Surat_Keluar/download/' . $item->id_surat_keluar) ?>" class="btn btn-success">Download</a>
 											<?php else: ?>
 												<a href="javascript:void(0)" class="btn btn-secondary">Tidak Ada</a>
 											<?php endif; ?>
 										</td>
 										<td>
+											
 											<a href="<?= base_url('Surat_Keluar/edit/')  . $item->id_surat_keluar ?>" class="btn  btn-info">Edit</a>
 											<form action="javascript:void(0)" method="post" class="d-inline" id="formDelete">
 												<button class="btn btnDelete btn-danger" data-url="<?= base_url('Surat_Keluar/delete/' . $item->id_surat_keluar) ?>">Hapus</button>
