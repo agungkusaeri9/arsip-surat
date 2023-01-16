@@ -36,4 +36,23 @@ class M_surat_keluar extends CI_Model {
 		$this->db->where('id_surat_keluar',$id_surat_keluar);
 		$this->db->delete('surat_keluar');
 	}
+
+	public function count()
+	{
+		return $this->db->get('surat_keluar')->num_rows();
+	}
+	public function countFile()
+	{	
+		$this->db->where('file !=', NULL);
+		return $this->db->get('surat_keluar')->num_rows();
+	}
+
+	public function getChart($bulan)
+	{
+		$year = date('Y');
+		$this->db->where('month(tanggal_surat)',$bulan);
+		$this->db->where('year(tanggal_surat)',$year);
+		$this->db->from('surat_keluar');
+		return $this->db->get()->num_rows();
+	}
 }

@@ -31,4 +31,9 @@ class M_klasifikasi extends CI_Model {
 		$this->db->delete('klasifikasi');
 	}
 
+	public function count()
+	{
+		return $this->db->get('klasifikasi')->num_rows();
+	}
+
 }

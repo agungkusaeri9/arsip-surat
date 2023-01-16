@@ -12,6 +12,8 @@
 				<div class="card">
 					<div class="card-body">
 						<a href="<?= base_url('Surat_Masuk/tambah') ?>" class="btn  btn-primary mb-3">Tambah Data</a>
+						<a href="<?= base_url('Surat_Masuk/print') ?>" class="btn  btn-danger mb-3"><i class="fas fa-print"></i> PDF</a>
+						<a href="<?= base_url('Surat_Masuk/export') ?>" class="btn  btn-info mb-3"><i class="fas fa-file-excel"></i> Export</a>
 						<div class="table-responsive">
 							<table class="table table-hover" id="dTable">
 								<thead>
@@ -47,7 +49,7 @@
 											<?php endif; ?>
 										</td>
 										<td>
-										<a href="" class="btn btn-warning">Disposisi</a>
+										<a href="<?= base_url('Disposisi/surat_masuk/' . $item->id_surat_masuk) ?>" class="btn btn-warning">Disposisi</a>
 											<a href="<?= base_url('Surat_Masuk/edit/')  . $item->id_surat_masuk ?>" class="btn  btn-info">Edit</a>
 											<form action="javascript:void(0)" method="post" class="d-inline" id="formDelete">
 												<button class="btn btnDelete btn-danger" data-url="<?= base_url('Surat_Masuk/delete/' . $item->id_surat_masuk) ?>">Hapus</button>

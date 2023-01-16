@@ -44,4 +44,9 @@ class M_user extends CI_Model {
 		$this->db->delete('users');
 	}
 
+	public function count()
+	{
+		return $this->db->get('users')->num_rows();
+	}
+
 }

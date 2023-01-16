@@ -78,7 +78,7 @@
 							</div>
 							<div class="form-group">
 								<label for="file">File</label>
-								<input id="file" type="file" class="form-control <?php if (form_error('file')) : ?> is-invalid <?php endif; ?>" name="file" tabindex="1" required autofocus>
+								<input id="file" type="file" class="form-control <?php if (form_error('file')) : ?> is-invalid <?php endif; ?>" name="file" tabindex="1" >
 								<?php if (form_error('file')) : ?>
 									<div class="invalid-feedback">
 										<?= form_error('file') ?>

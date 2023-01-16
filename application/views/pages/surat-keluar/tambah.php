@@ -5,6 +5,7 @@
 			<div class="breadcrumb-item "><a href="<?= base_url('dashboard') ?>">Dashboard</a></div>
 			<div class="breadcrumb-item active"><a href="<?= base_url('Surat_Keluar') ?>">Surat Keluar</a></div>
 			<div class="breadcrumb-item active">Tambah</div>
+			
 		</div>
 	</div>
 	<div class="section-body">
