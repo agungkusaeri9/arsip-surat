@@ -8,6 +8,14 @@ class M_surat_masuk extends CI_Model {
 		$this->db->order_by('id_surat_masuk','DESC');
 		return $this->db->get('surat_masuk')->result();
 	}
+
+	public function filter($arr)
+	{
+		$this->db->where($arr);
+		$this->db->order_by('id_surat_masuk','DESC');
+		return $this->db->get('surat_masuk')->result();
+	}
+
 	public function find($id_surat_masuk)
 	{
 		$this->db->where('id_surat_masuk',$id_surat_masuk);

@@ -47,6 +47,13 @@ class M_surat_keluar extends CI_Model {
 		return $this->db->get('surat_keluar')->num_rows();
 	}
 
+	public function filter($arr)
+	{
+		$this->db->where($arr);
+		$this->db->order_by('id_surat_keluar','DESC');
+		return $this->db->get('surat_keluar')->result();
+	}
+
 	public function getChart($bulan)
 	{
 		$year = date('Y');

@@ -13,7 +13,7 @@
 					<div class="card-body">
 						<a href="<?= base_url('Surat_Keluar/tambah') ?>" class="btn  btn-primary mb-3">Tambah Data</a>
 						<a href="<?= base_url('Surat_Keluar/print') ?>" class="btn  btn-danger mb-3"><i class="fas fa-print"></i> PDF</a>
-						<a href="<?= base_url('Surat_Keluar/export') ?>" class="btn  btn-info mb-3"><i class="fas fa-file-excel"></i> Export</a>
+						<a href="<?= base_url('Surat_Keluar/excel') ?>" class="btn  btn-info mb-3"><i class="fas fa-file-excel"></i> Export</a>
 						<div class="table-responsive">
 							<table class="table table-hover" id="dTable">
 								<thead>

@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Surat_Masuk extends CI_Controller
 {
 
@@ -9,6 +12,7 @@ class Surat_Masuk extends CI_Controller
 		parent::__construct();
 		$this->load->helper('auth');
 		$this->load->model('M_surat_masuk', 'surat_masuk');
+
 		auth();
 	}
 
@@ -164,9 +168,85 @@ class Surat_Masuk extends CI_Controller
 
 	public function print()
 	{
-		$mpdf = new \Mpdf\Mpdf();
-		$html = $this->load->view('pages/surat_masuk/print');
-		$mpdf->WriteHTML($html);
-		$mpdf->Output();
+		$from_date = $this->input->get('from_date');
+		$to_date = $this->input->get('to_date');
+
+		if ($from_date && $to_date) {
+			$arr = [
+				'tanggal_surat >=' => $from_date,
+				'tanggal_surat <=' => $to_date
+			];
+		} elseif ($from_date && !$to_date) {
+			$arr = [
+				'tanggal_surat' => $from_date
+			];
+		} else {
+			$arr = [
+				'id_surat_masuk != ' => NULL,
+			];
+		}
+		$data['items'] = $this->surat_masuk->filter($arr);
+		$html = $this->load->view('pages/surat-masuk/print', $data, TRUE);
+		$nama_file = "Laporan Surat Masuk";
+		generatePdfSuratMasuk($html, $nama_file, TRUE);
+	}
+
+	public function excel()
+	{
+		$from_date = $this->input->get('from_date');
+		$to_date = $this->input->get('to_date');
+
+		if ($from_date && $to_date) {
+			$arr = [
+				'tanggal_surat >=' => $from_date,
+				'tanggal_surat <=' => $to_date
+			];
+		} elseif ($from_date && !$to_date) {
+			$arr = [
+				'tanggal_surat' => $from_date
+			];
+		} else {
+			$arr = [
+				'id_surat_masuk != ' => NULL,
+			];
+		}
+
+		$surat_masuk = $this->surat_masuk->filter($arr);
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+		$sheet->setCellValue('A1', 'Laporan Surat Masuk');
+		$sheet->mergeCells('A1:H1');
+		$sheet->setCellValue('A2', 'No');
+		$sheet->setCellValue('B2', 'No. Agenda');
+		$sheet->setCellValue('C2', 'No. Surat');
+		$sheet->setCellValue('D2', 'Pengirim');
+		$sheet->setCellValue('E2', 'Isi');
+		$sheet->setCellValue('F2', 'Tanggal Surat');
+		$sheet->setCellValue('G2', 'Tanggal Diterima');
+		$sheet->setCellValue('H2', 'Keterangan');
+		$sheet->getStyle('A1:H1')->getAlignment()->setHorizontal('center');
+		$baris = 3;
+		$no = 1;
+		foreach ($surat_masuk as $sm) {
+			$sheet->setCellValue('A' . $baris, $no++);
+			$sheet->setCellValue('B' . $baris, $sm->no_agenda);
+			$sheet->setCellValue('C' . $baris, $sm->no_surat);
+			$sheet->setCellValue('D' . $baris, $sm->pengirim);
+			$sheet->setCellValue('E' . $baris, $sm->isi);
+			$sheet->setCellValue('F' . $baris, $sm->tanggal_surat);
+			$sheet->setCellValue('G' . $baris, $sm->tanggal_diterima);
+			$sheet->setCellValue('H' . $baris, $sm->keterangan);
+			$baris++;
+		}
+		
+
+		$filename = "Laporan Surat Masuk";
+		$writer = new Xlsx($spreadsheet);
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="' . $filename . '.xlsx"');
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }
