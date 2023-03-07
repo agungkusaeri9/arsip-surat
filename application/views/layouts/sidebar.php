@@ -1,25 +1,23 @@
 <aside id="sidebar-wrapper">
 	<div class="sidebar-brand">
-		<a href="<?= base_url('Dashboard') ?>">Arsip Surat</a>
+		<a href="<?= base_url('Dashboard') ?>">SIKENIK</a>
 	</div>
 	<div class="sidebar-brand sidebar-brand-sm">
-		<a href="<?= base_url('Dashboard') ?>">St</a>
+		<a href="<?= base_url('Dashboard') ?>">SKN</a>
 	</div>
 	<ul class="sidebar-menu">
 		<li>
 			<a class="nav-link" href="<?= base_url('dashboard') ?>"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
 		</li>
-		<li class="menu-header">MASTER</li>
 		<li>
-			<a class="nav-link" href="<?= base_url('user') ?>"><i class="fas fa-users"></i> <span>User</span></a>
+			<a class="nav-link" href="<?= base_url('Sifat_Surat') ?>"><i class="fas fa-folder"></i> <span>Sifat Surat</span></a>
 		</li>
 		<li>
-			<a class="nav-link" href="<?= base_url('Sifat_Surat') ?>"><i class="fas fa-users"></i> <span>Sifat Surat</span></a>
+			<a class="nav-link" href="<?= base_url('Klasifikasi') ?>"><i class="fas fa-folder"></i> <span>Klasifikasi</span></a>
 		</li>
 		<li>
-			<a class="nav-link" href="<?= base_url('Klasifikasi') ?>"><i class="fas fa-users"></i> <span>Klasifikasi</span></a>
+			<a class="nav-link" href="<?= base_url('Surat') ?>"><i class="fas fa-folder"></i> <span>Surat</span></a>
 		</li>
-
 		<li class="nav-item dropdown">
 			<a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Transaksi Surat</span></a>
 			<ul class="dropdown-menu">
@@ -38,6 +36,9 @@
 
 		<li>
 			<a class="nav-link" href="<?= base_url('Galeri') ?>"><i class="fas fa-file-archive"></i> <span>Galeri File</span></a>
+		</li>
+		<li>
+			<a class="nav-link" href="<?= base_url('user') ?>"><i class="fas fa-users"></i> <span>User</span></a>
 		</li>
 		<li>
 			<a class="nav-link" href="<?= base_url('Ubah_Password') ?>"><i class="fas fa-key"></i> <span>Ubah Password</span></a>

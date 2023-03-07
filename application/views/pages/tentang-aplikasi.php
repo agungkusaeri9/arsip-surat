@@ -15,7 +15,7 @@
 					</div>
 					<div class="card-body">
 						<p>
-							Sistem Kearsipan Elektronik Berbasis Website Pada Unit Tata Usaha SD Negeri Kalipang 4 merupakan sistem yang telah dikembangkan untuk penyimpanan data surat masuk dan surat keluar dengan sistem yang terorganisir
+						(SIKENIK) Sistem Kearsipan Elektronik Berbantuan Website Pada Unit Tata Usaha SD Negeri Kalipang 4 merupakan sistem yang telah dikembangkan untuk penyimpanan data surat masuk dan surat keluar dengan sistem yang terorganisir.
 						</p>
 					</div>
 				</div>
